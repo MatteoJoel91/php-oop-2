@@ -10,10 +10,16 @@ require_once __DIR__ . '/classes/creditcard.php';
 $food = new food ('Cibo per cani', 'Crocchette', 1, 'si');
 $food->setPrezzo(10);
 $user_registrato = new userRegistrato ('Luca', 'Rossi', 'Luca@gmail.com');
+
+if ($user_registrato->email !== '') {
+    $user_registrato->sconto = 20;
+}
+
 $user_registrato->setNumero('333-1234567');
 $user_registrato->registrato = true;
-$cartaCredito = new cartaCredito('5555-2222-3333-7777', '12/27');
-$cartaCredito->verificaScadenza = false;
+$cartaCredito = new cartaCredito('5555-2222-3333-7777');
+$cartaCredito->setExpirationMonth('04');
+$cartaCredito->setExpirationYear('22');
 
 
 echo 'Prodotto: '. $food->name;
@@ -22,7 +28,7 @@ echo 'Tipo di cibo: '. $food->tipoCibo;
 echo '<br>';
 echo 'Prezzo: '. $food->prezzo .' euro';
 echo '<br>';
-echo $user_registrato->getSconto();
+echo 'Sconto: '. $user_registrato->sconto . '%';
 echo '<br>';
 echo 'Prodotto confezionato: '. $food->confezionato;
 echo '<br>';
@@ -42,5 +48,5 @@ echo 'Pagamento';
 echo '<br>';
 echo 'Numero carta: '. $cartaCredito->numeroCarta;
 echo '<br>';
-echo $cartaCredito->pagamento();
+echo $cartaCredito->isExpired();
 

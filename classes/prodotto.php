@@ -4,6 +4,7 @@ class prodotto {
 
     public $name;
     public $prezzo;
+    
 
     public function __construct($name){
 

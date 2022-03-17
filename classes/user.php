@@ -3,14 +3,13 @@
 class user {
     public $name;
     public $cognome;
-    public $email;
     public $numeroTelefono;
+    public $sconto = 0;
 
-    public function __construct($name, $cognome, $email){
+    public function __construct($name, $cognome){
         
         $this->name = $name;
         $this->cognome = $cognome;
-        $this->email = $email;
 
     }
 
